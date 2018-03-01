@@ -1,1 +1,7 @@
 theme: jekyll-theme-cayman
+title: HEARTBROKEN
+description: A game by Indigo Pixels.
+show_downloads: "true"
+github:
+  zip_url:
+  tar_url:
