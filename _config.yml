@@ -3,6 +3,8 @@ title: HEARTBROKEN
 description: A game by Indigo Pixels.
 show_downloads: "true"
 github:
-  releases_url: https://github.com/github/heartbroken/releases
+  latest_release:
+    assets:
+      browser_download_url: https://github.com/KirbyZX/heartbroken/releases/download/v0.0.3-alpha/Heartbroken.Setup.Win.exe
   zip_url:
   tar_url:
