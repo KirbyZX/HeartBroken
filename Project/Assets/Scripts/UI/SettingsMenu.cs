@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour {
 
 	public Dropdown resolutionDropdown;
+    public Dropdown qualityDropdown;
 
 	private VolumeManager theVolumeManager;
 
 	Resolution[] resolutions;
 
-	void Start() {
+
+    void Start() {
 
 		theVolumeManager = FindObjectOfType<VolumeManager> ();
 
@@ -36,13 +38,26 @@ public class SettingsMenu : MonoBehaviour {
 		resolutionDropdown.AddOptions (options);
 		resolutionDropdown.value = currentResolutionIndex;
 		resolutionDropdown.RefreshShownValue ();
-	}
+
+        // Setting PlayerPrefs volume
+        for (int i = 0; i < theVolumeManager.volumeObjects.Length; i++)
+        {
+
+            theVolumeManager.volumeObjects[i].SetVolumeLevel(PlayerPrefs.GetFloat("volume"));
+            PlayerPrefs.SetFloat("volume", PlayerPrefs.GetFloat("volume"));
+        }
+
+        // Setting PlayerPrefs quality
+        qualityDropdown.value = PlayerPrefs.GetInt("quality");
+        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("quality"));
+    }
 
 	public void SetVolume (float volume) {
 
 		for (int i = 0; i < theVolumeManager.volumeObjects.Length; i++) {
 
 			theVolumeManager.volumeObjects [i].SetVolumeLevel (volume);
+            PlayerPrefs.SetFloat("volume", volume);
 		}
 
 	}
@@ -50,6 +65,7 @@ public class SettingsMenu : MonoBehaviour {
 	public void SetQuality(int qualityIndex) {
 
 		QualitySettings.SetQualityLevel (qualityIndex);
+        PlayerPrefs.SetInt("quality", qualityIndex);
 	}
 
 	public void SetFullscreen (bool isFullscreen) {

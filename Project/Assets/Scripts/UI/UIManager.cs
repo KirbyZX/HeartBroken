@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-		thePlayerStats = GetComponent<PlayerStats> ();
+        thePlayerStats = FindObjectOfType<PlayerStats>();
 	}
 	
 	// Update is called once per frame
@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour {
 			healthText.text = "DEAD";
 		}
 
-		levelText.text = "Lvl: " + thePlayerStats.level; //+ " (EXP: " + thePlayerStats.exp + "/" + thePlayerStats.levelUp[thePlayerStats.level] + ")";
+		levelText.text = "Lvl: " + thePlayerStats.level;
+        // + " (EXP: " + thePlayerStats.exp + "/" + thePlayerStats.levelUp[thePlayerStats.level] + ")";
 	}
 }

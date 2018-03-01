@@ -17,7 +17,7 @@ public class PlayerHealthManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		playerHealth = playerMaxHealth;
+		playerHealth = GameManager.gameManager.health;
 
 		playerSprite = GetComponent<SpriteRenderer> ();
 		sfxManager = FindObjectOfType<SFXManager> ();
@@ -54,13 +54,16 @@ public class PlayerHealthManager : MonoBehaviour {
 
 			flashLengthCounter -= Time.deltaTime;
 		}
+
+        GameManager.gameManager.health = playerHealth;
 	}
 
 	public void DamagePlayer(int damage) {
 
 		playerHealth -= damage;
+        GameManager.gameManager.health = playerHealth;
 
-		flashActive = true;
+        flashActive = true;
 		flashLengthCounter = flashLength;
 
 		sfxManager.playerHurt.Play ();

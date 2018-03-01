@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
 
-	public int level;
+	public int level = 0;
 	public int exp;
 	public int health;
 	public int attack;
@@ -22,9 +22,11 @@ public class PlayerStats : MonoBehaviour {
 
 		thePlayerHealth = FindObjectOfType<PlayerHealthManager> ();
 
-		health = healthLevels [1];
-		attack = attackLevels [1];
-		defence = defenceLevels [1];
+        exp = GameManager.gameManager.experience;
+
+		health = healthLevels [level];
+		attack = attackLevels [level];
+		defence = defenceLevels [level];
 	}
 	
 	// Update is called once per frame
@@ -34,13 +36,14 @@ public class PlayerStats : MonoBehaviour {
 
 			// level ++;
 			LevelUp();
-		}
-	}
+		}        
+    }
 
 	public void AddExperience(int expGain) {
 
 		exp += expGain;
-	}
+        GameManager.gameManager.experience = exp;
+    }
 
 	public void LevelUp() {
 
@@ -52,7 +55,10 @@ public class PlayerStats : MonoBehaviour {
 
 		attack = attackLevels [level];
 
-
 		defence = defenceLevels [level];
-	}
+
+        GameManager.gameManager.experience = exp;
+        GameManager.gameManager.defence = defence;
+        GameManager.gameManager.attack = attack;
+    }
 }

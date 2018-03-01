@@ -10,10 +10,16 @@ public class VolumeManager : MonoBehaviour {
 	public float currentVolumeLevel;
 	public Slider volumeSlider;
 
-	// Use this for initialization
-	void Start () {
+    private void OnEnable()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("volume");
+        currentVolumeLevel = PlayerPrefs.GetFloat("volume");
+    }
 
-		volumeObjects = FindObjectsOfType<VolumeController> ();
+    // Use this for initialization
+    void Start () {
+
+        volumeObjects = FindObjectsOfType<VolumeController> ();
 
 		if (currentVolumeLevel > maxVolumeLevel) {
 
@@ -24,10 +30,5 @@ public class VolumeManager : MonoBehaviour {
 
 			volumeObjects [i].SetVolumeLevel (currentVolumeLevel);
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
 	}
 }
