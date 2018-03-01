@@ -1,4 +1,4 @@
-You might not know what this is.
+*(N.B. This game is currently in very early development stages.)*
 
 # Meh
 
