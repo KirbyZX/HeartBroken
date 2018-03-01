@@ -5,6 +5,6 @@ show_downloads: "true"
 github:
   latest_release:
     assets:
-      browser_download_url: https://github.com/KirbyZX/heartbroken/releases/download/v0.0.3-alpha/Heartbroken.Setup.Win.exe
+      browser_download_url: https://github.com/KirbyZX/heartbroken/releases/download/v0.0.3-alpha/Heartbroken-0.0.3.Setup.exe
   zip_url:
   tar_url:
